@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000">
+  <defs>
+    <!-- Base Shapes -->
+    <path id="hex-terminal" d="M0,0 l4,2 l4,-2 l0,-8 l-4,-2 l-4,2 z"/>
+    
+    <!-- Numbers -->
+    <path id="char-0" d="M2,0 L8,0 L10,2 L10,14 L8,16 L2,16 L0,14 L0,2 Z M2,2 L8,2 L8,14 L2,14 Z"/>
+    <path id="char-1" d="M4,0 L4,16 M2,2 L4,0 L6,2"/>
+    <path id="char-2" d="M0,0 L8,0 L10,2 L10,6 L8,8 L2,8 L2,14 L10,14 L10,16 L0,16 L0,6 L2,4 L8,4 L8,2 L0,2 Z"/>
+    <path id="char-3" d="M0,0 L8,0 L10,2 L10,6 L8,8 L10,10 L10,14 L8,16 L0,16 L0,14 L8,14 L8,10 L4,10 L4,8 L8,8 L8,2 L0,2 Z"/>
+    <path id="char-4" d="M8,0 L8,16 M8,8 L0,8 L0,0 L2,0 L2,6"/>
+    <path id="char-5" d="M10,0 L0,0 L0,8 L8,8 L10,10 L10,14 L8,16 L0,16 L0,14 L8,14 L8,10 L0,10"/>
+    <path id="char-6" d="M10,0 L2,0 L0,2 L0,14 L2,16 L8,16 L10,14 L10,10 L8,8 L0,8 M2,2 L8,2 L8,6 L2,6"/>
+    <path id="char-7" d="M0,0 L10,0 L10,2 L6,16 L4,16 L8,2 L0,2"/>
+    <path id="char-8" d="M2,0 L8,0 L10,2 L10,6 L8,8 L10,10 L10,14 L8,16 L2,16 L0,14 L0,10 L2,8 L0,6 L0,2 Z M2,2 L8,2 L8,6 L2,6 M2,10 L8,10 L8,14 L2,14"/>
+    <path id="char-9" d="M0,16 L8,16 L10,14 L10,2 L8,0 L2,0 L0,2 L0,6 L2,8 L10,8 M8,14 L2,14 L2,10 L8,10"/>
+    
+    <!-- Letters A-F -->
+    <path id="char-A" d="M0,16 L0,4 L2,0 L8,0 L10,4 L10,16 M0,8 L10,8"/>
+    <path id="char-B" d="M0,16 L0,0 L8,0 L10,2 L10,6 L8,8 L10,10 L10,14 L8,16 Z M2,8 L8,8 M2,2 L8,2 L8,6 L2,6 M2,10 L8,10 L8,14 L2,14"/>
+    <path id="char-C" d="M2,0 L8,0 L10,2 L10,4 L8,4 L8,2 L2,2 L2,14 L8,14 L8,12 L10,12 L10,14 L8,16 L2,16 L0,14 L0,2 Z"/>
+    <path id="char-D" d="M0,0 L6,0 L10,4 L10,12 L6,16 L0,16 Z M2,2 L6,2 L8,4 L8,12 L6,14 L2,14"/>
+    <path id="char-E" d="M0,0 L10,0 L10,2 L2,2 L2,7 L8,7 L8,9 L2,9 L2,14 L10,14 L10,16 L0,16"/>
+    <path id="char-F" d="M0,0 L10,0 L10,2 L2,2 L2,7 L8,7 L8,9 L2,9 L2,16 L0,16"/>
+  </defs>
+</svg> 

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000">
+  <defs>
+    <!-- Base Shapes with thicker strokes -->
+    <path id="hex-terminal-bold" d="M0,0 l5,2.5 l5,-2.5 l0,-10 l-5,-2.5 l-5,2.5 z"/>
+    
+    <!-- Numbers - Bold -->
+    <path id="char-0" d="M1,0 L9,0 L11,2 L11,14 L9,16 L1,16 L-1,14 L-1,2 Z M2,3 L8,3 L8,13 L2,13 Z"/>
+    <path id="char-1" d="M3,0 L3,16 M1,2 L3,0 L5,2" stroke-width="2"/>
+    <path id="char-2" d="M-1,0 L9,0 L11,2 L11,6 L9,8 L1,8 L1,14 L11,14 L11,16 L-1,16 L-1,6 L1,4 L9,4 L9,2 L-1,2 Z"/>
+    <path id="char-3" d="M-1,0 L9,0 L11,2 L11,6 L9,8 L11,10 L11,14 L9,16 L-1,16 L-1,14 L9,14 L9,10 L3,10 L3,8 L9,8 L9,2 L-1,2 Z"/>
+    <path id="char-4" d="M9,0 L9,16 M9,8 L-1,8 L-1,0 L1,0 L1,6" stroke-width="2"/>
+    <path id="char-5" d="M11,0 L-1,0 L-1,8 L9,8 L11,10 L11,14 L9,16 L-1,16 L-1,14 L9,14 L9,10 L-1,10"/>
+    <path id="char-6" d="M11,0 L1,0 L-1,2 L-1,14 L1,16 L9,16 L11,14 L11,10 L9,8 L-1,8 M1,2 L9,2 L9,6 L1,6"/>
+    <path id="char-7" d="M-1,0 L11,0 L11,2 L5,16 L3,16 L9,2 L-1,2"/>
+    <path id="char-8" d="M1,0 L9,0 L11,2 L11,6 L9,8 L11,10 L11,14 L9,16 L1,16 L-1,14 L-1,10 L1,8 L-1,6 L-1,2 Z M1,2 L9,2 L9,6 L1,6 M1,10 L9,10 L9,14 L1,14"/>
+    <path id="char-9" d="M-1,16 L9,16 L11,14 L11,2 L9,0 L1,0 L-1,2 L-1,6 L1,8 L11,8 M9,14 L1,14 L1,10 L9,10"/>
+    
+    <!-- Letters A-F - Bold -->
+    <path id="char-A" d="M-1,16 L-1,4 L1,0 L9,0 L11,4 L11,16 M-1,8 L11,8" stroke-width="2"/>
+    <path id="char-B" d="M-1,16 L-1,0 L9,0 L11,2 L11,6 L9,8 L11,10 L11,14 L9,16 Z M1,8 L9,8 M1,2 L9,2 L9,6 L1,6 M1,10 L9,10 L9,14 L1,14"/>
+    <path id="char-C" d="M1,0 L9,0 L11,2 L11,4 L9,4 L9,2 L1,2 L1,14 L9,14 L9,12 L11,12 L11,14 L9,16 L1,16 L-1,14 L-1,2 Z"/>
+    <path id="char-D" d="M-1,0 L7,0 L11,4 L11,12 L7,16 L-1,16 Z M1,2 L7,2 L9,4 L9,12 L7,14 L1,14"/>
+    <path id="char-E" d="M-1,0 L11,0 L11,2 L1,2 L1,7 L9,7 L9,9 L1,9 L1,14 L11,14 L11,16 L-1,16"/>
+    <path id="char-F" d="M-1,0 L11,0 L11,2 L1,2 L1,7 L9,7 L9,9 L1,9 L1,16 L-1,16"/>
+  </defs>
+</svg> 
