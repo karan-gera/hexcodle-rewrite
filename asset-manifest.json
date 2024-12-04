@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/hexcodle-rewrite/static/css/main.d833f7f2.css",
+    "main.js": "/hexcodle-rewrite/static/js/main.dfca4220.js",
+    "static/js/453.f63ad6f7.chunk.js": "/hexcodle-rewrite/static/js/453.f63ad6f7.chunk.js",
+    "static/media/HexFont-Bold.svg": "/hexcodle-rewrite/static/media/HexFont-Bold.989606ee77720ba3a01a.svg",
+    "static/media/HexFont-Regular.svg": "/hexcodle-rewrite/static/media/HexFont-Regular.fd95e08cd07e3e45715a.svg",
+    "index.html": "/hexcodle-rewrite/index.html",
+    "main.d833f7f2.css.map": "/hexcodle-rewrite/static/css/main.d833f7f2.css.map",
+    "main.dfca4220.js.map": "/hexcodle-rewrite/static/js/main.dfca4220.js.map",
+    "453.f63ad6f7.chunk.js.map": "/hexcodle-rewrite/static/js/453.f63ad6f7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d833f7f2.css",
+    "static/js/main.dfca4220.js"
+  ]
+}
