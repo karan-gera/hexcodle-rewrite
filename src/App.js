@@ -15,6 +15,8 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [guessHistory, setGuessHistory] = useState([]);
   const [showInstructions, setShowInstructions] = useState(false);
+  const [accuracy, setAccuracy] = useState(0);
+  const [isClosing, setIsClosing] = useState(false);
 
   const hexToRgb = (hex) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -23,6 +25,22 @@ function App() {
       g: parseInt(result[2], 16),
       b: parseInt(result[3], 16)
     } : null;
+  };
+
+  const calculateAccuracy = (guess, target) => {
+    const guessRgb = hexToRgb(guess);
+    const targetRgb = hexToRgb(target);
+    
+    if (!guessRgb || !targetRgb) return 0;
+    
+    const maxDiff = Math.sqrt(Math.pow(255, 2) * 3); // Max possible difference
+    const currentDiff = Math.sqrt(
+      Math.pow(guessRgb.r - targetRgb.r, 2) +
+      Math.pow(guessRgb.g - targetRgb.g, 2) +
+      Math.pow(guessRgb.b - targetRgb.b, 2)
+    );
+    
+    return Math.round((1 - (currentDiff / maxDiff)) * 100);
   };
 
   const getColorName = (hex) => {
@@ -194,7 +212,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (gameOver || guessesLeft <= 0) return;
+    if (gameOver || guessesLeft <= 0 || inputValue.length < 6) return;
 
     const newHexColor = `#${inputValue}`;
     setHexColor(newHexColor);
@@ -217,6 +235,8 @@ function App() {
     } else {
       setGuessesLeft(prev => prev - 1);
     }
+
+    setAccuracy(calculateAccuracy(newHexColor, targetColor));
   };
 
   const handleInputChange = (e) => {
@@ -232,6 +252,15 @@ function App() {
     setGuessesLeft(6);
     setGameOver(false);
     setGuessHistory([]);
+    setAccuracy(0);
+  };
+
+  const handleCloseModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setShowInstructions(false);
+    }, 300);
   };
 
   return (
@@ -243,9 +272,25 @@ function App() {
       >
         ?
       </button>
+      <button 
+        className="new-color-button"
+        onClick={handleNewColor}
+        title="New Color"
+      >
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <circle cx="15.5" cy="8.5" r="1.5"/>
+          <circle cx="15.5" cy="15.5" r="1.5"/>
+          <circle cx="8.5" cy="15.5" r="1.5"/>
+        </svg>
+      </button>
 
       {showInstructions && (
-        <div className="modal-overlay" onClick={() => setShowInstructions(false)}>
+        <div 
+          className={`modal-overlay ${isClosing ? 'closing' : ''}`} 
+          onClick={handleCloseModal}
+        >
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <h2>How to Play</h2>
             <ul>
@@ -263,7 +308,7 @@ function App() {
             </ul>
             <button 
               className="modal-close"
-              onClick={() => setShowInstructions(false)}
+              onClick={handleCloseModal}
             >
               Close
             </button>
@@ -319,6 +364,20 @@ function App() {
         </div>
       </div>
 
+      <div className="accuracy-slider">
+        <div 
+          className="accuracy-fill"
+          style={{
+            width: `${accuracy}%`,
+            background: `linear-gradient(to right, ${
+              parseInt(targetColor.slice(1), 16) > 0x7FFFFF ? '#000000' : '#FFFFFF'
+            }, ${targetColor})`,
+            transition: 'width 0.5s ease-out'
+          }}
+        />
+        <span className="accuracy-label">{accuracy}%</span>
+      </div>
+
       <form className="color-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -328,7 +387,11 @@ function App() {
           placeholder="ff0000"
           disabled={gameOver}
         />
-        <button type="submit" className="submit-button" disabled={gameOver}>
+        <button 
+          type="submit" 
+          className="submit-button" 
+          disabled={gameOver || inputValue.length < 6}
+        >
           Submit
         </button>
       </form>
@@ -352,19 +415,24 @@ function App() {
                 />
                 <span className="history-hex">{guess.color}</span>
                 <div className="history-feedback">
-                  <span>{guess.feedback.r}</span>
-                  <span>{guess.feedback.g}</span>
-                  <span>{guess.feedback.b}</span>
+                  <div className="feedback-item">
+                    <span className="channel">R</span>
+                    <span className="value">{guess.feedback.r}</span>
+                  </div>
+                  <div className="feedback-item">
+                    <span className="channel">G</span>
+                    <span className="value">{guess.feedback.g}</span>
+                  </div>
+                  <div className="feedback-item">
+                    <span className="channel">B</span>
+                    <span className="value">{guess.feedback.b}</span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
-
-      <button onClick={handleNewColor} className="reload-button">
-        New Color
-      </button>
     </div>
   );
 }
