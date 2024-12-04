@@ -17,6 +17,7 @@ function App() {
   const [showInstructions, setShowInstructions] = useState(false);
   const [accuracy, setAccuracy] = useState(0);
   const [isClosing, setIsClosing] = useState(false);
+  const [showConfirmReroll, setShowConfirmReroll] = useState(false);
 
   const hexToRgb = (hex) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -255,11 +256,27 @@ function App() {
     setAccuracy(0);
   };
 
+  const handleNewColorClick = () => {
+    if (guessHistory.length > 0) {
+      setShowConfirmReroll(true);
+    } else {
+      handleNewColor();
+    }
+  };
+
   const handleCloseModal = () => {
     setIsClosing(true);
     setTimeout(() => {
       setIsClosing(false);
       setShowInstructions(false);
+    }, 300);
+  };
+
+  const handleCloseConfirmReroll = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setShowConfirmReroll(false);
     }, 300);
   };
 
@@ -274,7 +291,7 @@ function App() {
       </button>
       <button 
         className="new-color-button"
-        onClick={handleNewColor}
+        onClick={handleNewColorClick}
         title="New Color"
       >
         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -312,6 +329,35 @@ function App() {
             >
               Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {showConfirmReroll && (
+        <div 
+          className={`modal-overlay ${isClosing ? 'closing' : ''}`} 
+          onClick={handleCloseConfirmReroll}
+        >
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <h2>Start New Game?</h2>
+            <p className="confirm-text">Are you sure you want to start a new game? Your current progress will be lost.</p>
+            <div className="confirm-buttons">
+              <button 
+                className="modal-button cancel"
+                onClick={handleCloseConfirmReroll}
+              >
+                Cancel
+              </button>
+              <button 
+                className="modal-button confirm"
+                onClick={() => {
+                  handleCloseConfirmReroll();
+                  setTimeout(handleNewColor, 300);
+                }}
+              >
+                New Game
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -28,9 +28,10 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 40px;
+  padding: 20px;
   background-color: #1a1a1a;
   color: #ffffff;
+  padding-top: 100px;
 }
 
 .game-info {
@@ -297,13 +298,17 @@ button {
 }
 
 .game-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'HexFont', monospace;
   font-size: 64px;
   font-weight: 700;
   color: #a600ff;
   text-shadow: 0 0 15px rgba(166, 0, 255, 0.4);
-  margin-bottom: 40px;
   letter-spacing: 4px;
+  margin: 0;
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -513,4 +518,48 @@ button {
 
 .modal-overlay.closing .modal-content {
   animation: slideOut 0.3s ease-out forwards;
+}
+
+.confirm-text {
+  color: #fff;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.6;
+  font-family: 'HexFont', monospace;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'HexFont', monospace;
+}
+
+.modal-button.cancel {
+  background: #2d2d2d;
+  border: 2px solid #a600ff;
+  color: #a600ff;
+}
+
+.modal-button.cancel:hover {
+  background: #3d3d3d;
+}
+
+.modal-button.confirm {
+  background: #a600ff;
+}
+
+.modal-button.confirm:hover {
+  background: #8400cc;
 }
