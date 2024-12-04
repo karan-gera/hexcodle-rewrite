@@ -301,7 +301,7 @@ button {
   position: absolute;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
   font-family: 'HexFont', monospace;
   font-size: 64px;
   font-weight: 700;
@@ -309,7 +309,18 @@ button {
   text-shadow: 0 0 15px rgba(166, 0, 255, 0.4);
   letter-spacing: 4px;
   margin: 0;
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUpTitle 0.6s ease-out;
+}
+
+@keyframes fadeInUpTitle {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .instructions-button {
