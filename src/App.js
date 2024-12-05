@@ -328,7 +328,7 @@ function App() {
               <li className="symbol">↓↓↓ = Decrease by 16+</li>
             </ul>
             <button 
-              className="modal-close"
+              className="modal-button close"
               onClick={handleCloseModal}
             >
               Close
@@ -369,15 +369,60 @@ function App() {
       <div className="game-info">
         <div className="guesses-left">Guesses Left: {guessesLeft}</div>
         {gameOver && (
-          <div className={`game-over ${hexColor === targetColor ? 'win' : 'lose'}`}>
-            {hexColor === targetColor 
-              ? `You won with ${6 - guessesLeft} ${6 - guessesLeft === 1 ? 'guess' : 'guesses'}!${
-                  getColorName(targetColor) ? ` You found ${getColorName(targetColor)}!` : ''
-                }` 
-              : `Game Over! The color was ${targetColor}${
-                  getColorName(targetColor) ? ` (${getColorName(targetColor)})` : ''
-                }`
-            }
+          <div 
+            className={`modal-overlay ${isClosing ? 'closing' : ''}`}
+          >
+            <div className="modal-content game-over-modal">
+              <h2 className={hexColor === targetColor ? 'win' : 'lose'}>
+                {hexColor === targetColor ? 'You Won!' : 'Game Over!'}
+              </h2>
+              
+              <div className="game-stats">
+                <p className="result-text">
+                  {hexColor === targetColor 
+                    ? `You found ${getColorName(targetColor) || targetColor} in ${6 - guessesLeft} ${6 - guessesLeft === 1 ? 'guess' : 'guesses'}!`
+                    : `The color was ${getColorName(targetColor) || targetColor}`
+                  }
+                </p>
+                
+                <div className="guess-timeline">
+                  {guessHistory.map((guess, index) => (
+                    <div key={index} className="timeline-guess">
+                      <div className="guess-color" style={{backgroundColor: guess.color}} />
+                      <div className="guess-arrows">
+                        <span>R: {guess.feedback.r}</span>
+                        <span>G: {guess.feedback.g}</span>
+                        <span>B: {guess.feedback.b}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="modal-actions">
+                <button 
+                  className="modal-button share"
+                  onClick={() => {
+                    const result = `Hexcurrodle ${hexColor === targetColor ? 6 - guessesLeft : 'X'}/6\n\n${
+                      guessHistory
+                        .slice()
+                        .reverse()
+                        .map(g => `${g.feedback.r} ${g.feedback.g} ${g.feedback.b}`)
+                        .join('\n')
+                    }`;
+                    navigator.clipboard.writeText(result);
+                  }}
+                >
+                  Share Result
+                </button>
+                <button 
+                  className="modal-button new-game"
+                  onClick={handleNewColor}
+                >
+                  New Game
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -483,6 +528,10 @@ function App() {
           </div>
         </div>
       )}
+
+      <div className="classic-link-container">
+        Not your speed? Try <a href="https://hexcodle.com/" className="classic-link" target="_blank" rel="noopener noreferrer">Classic Edition</a>
+      </div>
     </div>
   );
 }

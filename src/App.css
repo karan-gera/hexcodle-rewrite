@@ -31,12 +31,14 @@ body {
   padding: 20px;
   background-color: #1a1a1a;
   color: #ffffff;
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + 20px);
 }
 
 .game-info {
+  margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
+  width: 100%;
 }
 
 .guesses-left {
@@ -308,7 +310,7 @@ button {
   align-items: center;
   padding: 20px;
   background-color: #1a1a1a;
-  z-index: 10;
+  z-index: 100;
 }
 
 .game-title {
@@ -390,7 +392,8 @@ button {
   margin-top: 20px;
 }
 
-.modal-button {
+.modal-button,
+.modal-close {
   flex: 1;
   padding: 12px;
   border: none;
@@ -400,6 +403,28 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'HexFont', monospace;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2d2d2d;
+  border: 2px solid #a600ff;
+  color: #a600ff;
+  font-size: 20px;
+  flex: initial;
+}
+
+.modal-close:hover {
+  background: #a600ff;
+  color: white;
 }
 
 .modal-button.cancel {
@@ -420,10 +445,23 @@ button {
   background: #8400cc;
 }
 
+.modal-button.close {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+  background: #a600ff;
+  border: none;
+  font-weight: 600;
+}
+
+.modal-button.close:hover {
+  background: #8400cc;
+}
+
 :root {
   --title-size: min(64px, 12vw);
   --button-size: min(40px, 10vw);
-  --header-height: max(80px, 15vh);
+  --header-height: 140px;
 }
 
 @media (max-width: 480px) {
@@ -471,4 +509,191 @@ button {
   font-family: 'HexFont', monospace;
   font-weight: 700;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: #2d2d2d;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+  color: #a600ff;
+  margin-bottom: 20px;
+  font-family: 'HexFont', monospace;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modal-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-content li {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal-content li.symbol {
+  padding-left: 20px;
+  color: #ccc;
+  font-family: 'HexFont', monospace;
+  font-weight: 700;
+}
+
+.new-color-button:hover,
+.instructions-button:hover {
+  background: #a600ff;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-overlay.closing {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+.modal-overlay.closing .modal-content {
+  animation: slideOut 0.3s ease-out forwards;
+}
+
+.game-over-modal {
+  max-width: 600px;
+}
+
+.game-over-modal h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.game-over-modal h2.win {
+  color: #4CAF50;
+}
+
+.game-over-modal h2.lose {
+  color: #f44336;
+}
+
+.game-stats {
+  margin: 20px 0;
+}
+
+.result-text {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.guess-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background: #222;
+  border-radius: 8px;
+}
+
+.timeline-guess {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.guess-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.guess-arrows {
+  display: flex;
+  gap: 15px;
+  font-family: 'HexFont', monospace;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.modal-button.share {
+  background: #2d2d2d;
+  border: 2px solid #a600ff;
+  color: #a600ff;
+  order: 2;
+}
+
+.modal-button.share:hover {
+  background: #3d3d3d;
+}
+
+.modal-button.new-game {
+  background: #a600ff;
+  order: 1;
+}
+
+.modal-button.new-game:hover {
+  background: #8400cc;
+}
+
+.classic-link-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #ccc;
+  font-family: 'HexFont', monospace;
+  font-weight: 600;
+  padding: 20px;
+  background: linear-gradient(to top, #1a1a1a 60%, transparent);
+}
+
+.classic-link {
+  color: #a600ff;
+  text-decoration: none;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.classic-link:hover {
+  color: #8400cc;
+  text-decoration: underline;
 }
