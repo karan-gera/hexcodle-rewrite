@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/hexcodle-rewrite/static/css/main.000a83fe.css",
-    "main.js": "/hexcodle-rewrite/static/js/main.d44a54bf.js",
+    "main.css": "/hexcodle-rewrite/static/css/main.b4af98da.css",
+    "main.js": "/hexcodle-rewrite/static/js/main.b1012a5c.js",
     "static/js/453.f63ad6f7.chunk.js": "/hexcodle-rewrite/static/js/453.f63ad6f7.chunk.js",
     "static/media/HexFont-Bold.svg": "/hexcodle-rewrite/static/media/HexFont-Bold.989606ee77720ba3a01a.svg",
     "static/media/HexFont-Regular.svg": "/hexcodle-rewrite/static/media/HexFont-Regular.fd95e08cd07e3e45715a.svg",
     "index.html": "/hexcodle-rewrite/index.html",
-    "main.000a83fe.css.map": "/hexcodle-rewrite/static/css/main.000a83fe.css.map",
-    "main.d44a54bf.js.map": "/hexcodle-rewrite/static/js/main.d44a54bf.js.map",
+    "main.b4af98da.css.map": "/hexcodle-rewrite/static/css/main.b4af98da.css.map",
+    "main.b1012a5c.js.map": "/hexcodle-rewrite/static/js/main.b1012a5c.js.map",
     "453.f63ad6f7.chunk.js.map": "/hexcodle-rewrite/static/js/453.f63ad6f7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.000a83fe.css",
-    "static/js/main.d44a54bf.js"
+    "static/css/main.b4af98da.css",
+    "static/js/main.b1012a5c.js"
   ]
 }
