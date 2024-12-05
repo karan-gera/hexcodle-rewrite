@@ -675,7 +675,7 @@ button {
 
 .classic-link-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
@@ -684,6 +684,7 @@ button {
   font-weight: 600;
   padding: 20px;
   background: linear-gradient(to top, #1a1a1a 60%, transparent);
+  z-index: 50;
 }
 
 .classic-link {
