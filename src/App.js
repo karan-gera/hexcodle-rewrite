@@ -282,26 +282,30 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="game-title">HEXCURRODLE</h1>
-      <button 
-        className="instructions-button"
-        onClick={() => setShowInstructions(true)}
-      >
-        ?
-      </button>
-      <button 
-        className="new-color-button"
-        onClick={handleNewColorClick}
-        title="New Color"
-      >
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <circle cx="15.5" cy="8.5" r="1.5"/>
-          <circle cx="15.5" cy="15.5" r="1.5"/>
-          <circle cx="8.5" cy="15.5" r="1.5"/>
-        </svg>
-      </button>
+      <div className="header-container">
+        <h1 className="game-title">HEXCURRODLE</h1>
+        <div className="button-container">
+          <button 
+            className="new-color-button"
+            onClick={handleNewColorClick}
+            title="New Color"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <circle cx="15.5" cy="8.5" r="1.5"/>
+              <circle cx="15.5" cy="15.5" r="1.5"/>
+              <circle cx="8.5" cy="15.5" r="1.5"/>
+            </svg>
+          </button>
+          <button 
+            className="instructions-button"
+            onClick={() => setShowInstructions(true)}
+          >
+            ?
+          </button>
+        </div>
+      </div>
 
       {showInstructions && (
         <div 
